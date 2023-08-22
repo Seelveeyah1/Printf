@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 	{
 	if (*format == '%')
 	{
-		format++; // Move past '%'
+		format++; /* Move past '%' */
 	if (*format == 'c')
 	{
 		char c = va_arg(args, int);
