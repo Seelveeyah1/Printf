@@ -36,5 +36,9 @@ int prints_hexadecimal(va_list args, char *buffer,
 		int *buffer_index, char flags);
 int _prints_conversions(const char *format, char specifier,
 	va_list args, char *buffer, int *buffer_index);
+int _print_signed_int(va_list args, char *buffer,
+int *buffer_index, char flags, char length_modifier);
+int print_unsigned_int(va_list args, char *buffer,
+int *buffer_index, char flags, char length_modifier);
 
 #endif /* MAIN_H */
