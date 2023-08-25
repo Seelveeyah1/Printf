@@ -9,6 +9,9 @@
 #define FLAG_SPACE  (1 << 1)
 #define FLAG_HASH   (1 << 2)
 
+#define LENGTH_MODIFIER_L 'l'
+#define LENGTH_MODIFIER_H 'h'
+
 int _printf(const char *format, ...);
 int _putchar(char c);
 int print_char(char c);
@@ -38,7 +41,11 @@ int _prints_conversions(const char *format, char specifier,
 	va_list args, char *buffer, int *buffer_index);
 int _print_signed_int(va_list args, char *buffer,
 int *buffer_index, char flags, char length_modifier);
-int print_unsigned_int(va_list args, char *buffer,
+int _print_unsigned_int(va_list args, char *buffer,
 int *buffer_index, char flags, char length_modifier);
+static int prints_string(va_list args, char *buffer,       int *buffer_index, char flags, char length_modifier, int field_width);
+static char parse_flags(const char **format);
+static int parse_field_width(const char **format);
+static char parse_length_modifier(const char **format);
 
 #endif /* MAIN_H */
