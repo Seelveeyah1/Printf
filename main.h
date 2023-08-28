@@ -7,10 +7,14 @@
 
 #define FLAG_PLUS   (1 << 0)
 #define FLAG_SPACE  (1 << 1)
-#define FLAG_HASH   (1 << 2)
+#define FLAG_ZERO   (1 << 2)
+#define FLAG_HASH   (1 << 3)
+#define FLAG_MINUS  (1 << 4)
 
-#define LENGTH_MODIFIER_L 'l'
-#define LENGTH_MODIFIER_H 'h'
+/* Custom length modifiers */
+#define LENGTH_NONE   0
+#define LENGTH_LONG   'l'
+#define LENGTH_SHORT  'h'
 
 int _printf(const char *format, ...);
 int _putchar(char c);
@@ -18,7 +22,7 @@ int print_char(char c);
 int print_string(char *str);
 int print_number(int n);
 int print_number_unsigned(unsigned int n, unsigned int base);
-
+int length_of_hex(unsigned int num);
 int _print_conversion(char specifier, va_list args);
 int print_number_long(long n, unsigned int base, int is_signed);
 
@@ -63,10 +67,26 @@ static char parse_flags(const char **format);
 static int parse_field_width(const char **format);
 static char parse_length_modifier(const char **format);
 static int parse_precision(const char **format);
+char parse_length_modifier(const char **format);
+char parse_flags(const char **format);
+int parse_field_width(const char **format);
+int parse_precision(const char **format);
 
 int print_strings(va_list args, char *buffer, int 
 *buffer_index, char flags, char length_modifier, int 
 field_width, int precision);
+
+static int handle_custom_specifiers(char specifier,
+va_list args, char *buffer, int *buffer_index, char flags,
+char length_modifier, int field_width, int precision, char zero_pad);
+
+static int prints_number(int n, char *buffer, int
+*buffer_index, char flags, int field_width, char zero_pad);
+
+int _print_hexadecimal(va_list args, char *buffer,
+int *buffer_index, char flags, char length_modifier, int
+field_width, int precision, char zero_pad);
+
 
 
 #endif /* MAIN_H */
