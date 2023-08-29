@@ -87,6 +87,8 @@ int _print_hexadecimal(va_list args, char *buffer,
 int *buffer_index, char flags, char length_modifier, int
 field_width, int precision, char zero_pad);
 
+static int _prints_number(int n, char *buffer, int
+*buffer_index, char flags, int field_width, char zero_pad,
+int align_left);
 
-
-#endif /* MAIN_H */
+#endif
